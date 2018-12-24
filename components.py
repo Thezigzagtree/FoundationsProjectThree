@@ -26,7 +26,8 @@ class Club():
 
     def print_member_list(self):
         for member in self.members:
-            print (" "+member.name)
+            print ("%s"%member.name)
+        return
 
     def alreadyHas(self, person):
         if person in self.members:
@@ -42,4 +43,5 @@ class Club():
                 print (" %s (%s years old, President) - %s" %(member.name, member.age, member.bio))
             else:
                 print (" %s (%s years old) - %s" %(member.name, member.age, member.bio))
-        print ("Average age = %s" %(avg/len(self.members)))
+        print (" - Average age = %s" %(avg/len(self.members)))
+        

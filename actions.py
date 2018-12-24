@@ -35,7 +35,7 @@ def options_interpretter(option):
         view_club_members()
     elif (option == "-1"):
         exit()
-
+    
 def populate_newClub (tempClub):
     
     print ("Enter the number of a person you want to recruit to %s (-1 to stop):" %tempClub.name)
@@ -44,7 +44,7 @@ def populate_newClub (tempClub):
             print ("%s]%s"%(i+1, population[i].name))
         selection = input("Which person would you like to join your club? ")
         if (selection == "-1"):
-            return
+            return None
         elif (selection_check(selection)):
             if (tempClub.alreadyHas(population[int(selection)-1])):
                 print ("That person is already a member of this club!")
@@ -56,7 +56,7 @@ def populate_newClub (tempClub):
             print ("Please select a valid Number")
         print ("----------------")
         print ("Current Members:")
-        print (tempClub.print_member_list())
+        tempClub.print_member_list()
         print ("----------------")
 
 def selection_check(selection):
@@ -81,12 +81,13 @@ def create_club():
     populate_newClub (tempClub)
     tempClub.members = [myself] + tempClub.members
     tempClub.assign_president(myself)
+    clubs.append(tempClub)
     print (" Here is your club overview:")
     print (" Title: %s" %tempClub.name)
     print (" Description: %s" %tempClub.description)
     print (" Members:")
-    print (tempClub.print_member_list_detail())
-    clubs.append(tempClub)
+    tempClub.print_member_list_detail()
+    
 
 def view_clubs():
         for club in clubs:
